@@ -23,8 +23,23 @@ public class Produit {
     @Column(name="quantite_produit")
     private BigDecimal quantite;
 
+
+
     @Column(name="image_produit")
     private String image;
+
+    @Column(name="prix_unitaire")
+    private BigDecimal prixUnitaire;
+
+    public BigDecimal getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    public void setPrixUnitaire(BigDecimal prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
+    }
+
+
 
     public long getId() {
         return id;

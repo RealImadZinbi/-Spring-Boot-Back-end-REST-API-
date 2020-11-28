@@ -21,7 +21,7 @@ import java.util.Map;
     public List<Produit>  getAllProducts() {
         return produitRepository.findAll();
     }
-    @GetMapping("/produit/{id}")
+    @GetMapping("/produits/{id}")
     public ResponseEntity<Produit> getProductById(@PathVariable(value = "id") Long productId)
         throws ResourceNotFoundException {
         Produit product = produitRepository.findById(productId)
@@ -34,6 +34,7 @@ import java.util.Map;
         return produitRepository.save(produit);
     }
 
+    @PutMapping("/produits/{id}")
     public ResponseEntity<Produit> updateProduit(@PathVariable(value = "id") Long productId,
                                                  @RequestBody Produit productDetails) throws ResourceNotFoundException {
         Produit produit = produitRepository.findById(productId)
@@ -44,6 +45,7 @@ import java.util.Map;
         produit.setDescription(productDetails.getDescription());
         produit.setCategorie(productDetails.getCategorie());
         produit.setImage(productDetails.getImage());
+        produit.setPrixUnitaire(productDetails.getPrixUnitaire());
         final Produit updatedProduit = produitRepository.save(produit);
         return ResponseEntity.ok(updatedProduit);
 
